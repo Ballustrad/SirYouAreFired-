@@ -603,7 +603,7 @@ GameObject:
   m_Component:
   - component: {fileID: 213527045}
   - component: {fileID: 213527046}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: LevelManager
   m_TagString: Untagged
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
@@ -619,7 +619,7 @@ Transform:
   m_GameObject: {fileID: 213527044}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -26.7, y: 23.7, z: 0}
+  m_LocalPosition: {x: -3.52, y: 9.08, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -680,7 +680,7 @@ MonoBehaviour:
   BoundsMode: 1
   LevelBounds:
     m_Center: {x: -3.52, y: 9.08, z: 0}
-    m_Extent: {x: 71.35, y: 9.96, z: 32.69}
+    m_Extent: {x: 71.35, y: 80.7, z: 32.69}
   ConvertToColliderBoundsButton: 0
   LoadingSceneMode: 1
   LoadingSceneName: LoadingScreen

@@ -19772,7 +19772,8 @@ GameObject:
   - component: {fileID: 2633440199758918889}
   - component: {fileID: 2674814376008494428}
   - component: {fileID: 4945169434680732321}
-  - component: {fileID: 8452548898601886612}
+  - component: {fileID: 6564958393773040588}
+  - component: {fileID: 7111983612135011060}
   m_Layer: 9
   m_Name: NewCorgi3D
   m_TagString: Player
@@ -20071,7 +20072,7 @@ MonoBehaviour:
   BlockingMovementStates: 
   BlockingConditionStates: 
   NumberOfJumps: 1
-  JumpHeight: 5
+  JumpHeight: 3
   JumpRestrictions: 2
   ResetCameraOffsetOnJump: 0
   CanJumpDownOneWayPlatforms: 1
@@ -20161,7 +20162,7 @@ MonoBehaviour:
   BlockingConditionStates: 
   DanglingRaycastOrigin: {x: 0.7, y: -0.25, z: 0}
   DanglingRaycastLength: 1
---- !u!114 &8452548898601886612
+--- !u!114 &6564958393773040588
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20170,19 +20171,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 2633440199758918902}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2bb48ea7e7fc4c0fa43dce17235f4f1, type: 3}
+  m_Script: {fileID: 11500000, guid: 3e12507b9c91bd542b1b569babe3b98c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   AbilityStartFeedbacks: {fileID: 2501642249453839989}
   AbilityStopFeedbacks: {fileID: 0}
   AbilityPermitted: 1
   BlockingMovementStates: 
-  BlockingConditionStates: 
-  DashDistance: 5
-  DashForce: 30
+  BlockingConditionStates: 0400000003000000
+  DashDistance: 10
+  DashForce: 40
   ResetForcesOnExit: 1
   Aim:
-    AimControl: 0
+    AimControl: 3
     RotationMode: 2
     MinimumAngle: -180
     MaximumAngle: 180
@@ -20190,13 +20191,48 @@ MonoBehaviour:
   MinimumInputThreshold: 0.1
   FlipCharacterIfNeeded: 1
   AutoCorrectTrajectory: 1
-  DashCooldown: 0.3
-  LimitedDashes: 0
-  SuccessiveDashAmount: 1
+  DashCooldown: 0
+  LimitedDashes: 1
+  SuccessiveDashAmount: 3
   SuccessiveDashesLeft: 1
   SuccessiveDashResetMethod: 0
   SuccessiveDashResetDuration: 2
   InvincibleWhileDashing: 0
+  TargetDamageOnTouch: {fileID: 0}
+--- !u!114 &7111983612135011060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2633440199758918902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a07c6668aa55403790d27b575279549, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AbilityStartFeedbacks: {fileID: 0}
+  AbilityStopFeedbacks: {fileID: 0}
+  AbilityPermitted: 1
+  BlockingMovementStates: 
+  BlockingConditionStates: 
+  InitialWeapon: {fileID: 6559824326151134285, guid: 6cca503551db94e4bb6309db3879b414,
+    type: 3}
+  CanPickupWeapons: 0
+  WeaponAttachment: {fileID: 0}
+  ForceWeaponScaleResetOnEquip: 0
+  ForceWeaponRotationResetOnEquip: 0
+  AutomaticallyBindAnimator: 1
+  AmmoDisplayID: 0
+  ContinuousPress: 0
+  GettingHitInterruptsAttack: 0
+  CanShootFromLadders: 0
+  FaceWeaponDirection: 0
+  InvertHorizontalAimWhenWallclinging: 0
+  BufferInput: 0
+  NewInputExtendsBuffer: 0
+  MaximumBufferDuration: 0.25
+  CurrentWeapon: {fileID: 0}
 --- !u!1 &2689386507821044998
 GameObject:
   m_ObjectHideFlags: 0
