@@ -1839,7 +1839,7 @@ PrefabInstance:
     - target: {fileID: 114000013241633116, guid: ace2d4bf56f98df4196ff81845a465d7,
         type: 3}
       propertyPath: BarDirection
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114000013241633116, guid: ace2d4bf56f98df4196ff81845a465d7,
         type: 3}
@@ -1856,7 +1856,8 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114000013241633116, guid: ace2d4bf56f98df4196ff81845a465d7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
