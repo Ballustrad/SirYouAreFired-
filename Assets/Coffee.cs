@@ -1,5 +1,6 @@
 using MoreMountains.CorgiEngine;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Coffee : MonoBehaviour
 {
@@ -11,7 +12,8 @@ public class Coffee : MonoBehaviour
     private float timer = 0f;
     private float interval = 1f;
     private bool isAlive = true; // Booléen pour suivre si le personnage est en vie ou non
-
+    public Image foregroundImage; // Image de foreground de la barre de progression
+    public Image backgroundImage;
     private void Awake()
     {
         coffeeAmount = 100;
@@ -29,6 +31,15 @@ public class Coffee : MonoBehaviour
                 LooseCoffee(10); // Appelle la fonction lorsque le timer atteint l'intervalle
                 timer = 0f; // Réinitialise le timer
             }
+        }
+        if (foregroundImage != null)
+        {
+            // Calculer la taille relative de la barre de progression en fonction de coffeeAmount
+            float fillAmount = (float)coffeeAmount / maxAmount;
+            // Limiter la taille de la barre de progression pour qu'elle ne dépasse pas la taille de l'image de background
+            fillAmount = Mathf.Clamp01(fillAmount);
+            // Appliquer la taille relative à l'image de foreground
+            foregroundImage.fillAmount = fillAmount;
         }
     }
 
