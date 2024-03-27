@@ -1,7 +1,7 @@
-using UnityEngine;
-using System.Collections;
-using MoreMountains.Tools;
 using MoreMountains.Feedbacks;
+using MoreMountains.Tools;
+using System.Collections;
+using UnityEngine;
 
 namespace MoreMountains.CorgiEngine
 {
@@ -13,7 +13,8 @@ namespace MoreMountains.CorgiEngine
     public class Health : MonoBehaviour
     {
         /// the current health of the character
-        [MMReadOnly] [Tooltip("the current health of the character")]
+        [MMReadOnly]
+        [Tooltip("the current health of the character")]
         public int CurrentHealth;
 
         [Header("Health")]
@@ -33,26 +34,28 @@ namespace MoreMountains.CorgiEngine
         public bool Invulnerable = false;
 
         /// If this is true, this object can't take damage at the moment
-        [MMReadOnly] [Tooltip("If this is true, this object can't take damage at the moment")]
+        [MMReadOnly]
+        [Tooltip("If this is true, this object can't take damage at the moment")]
         public bool TemporarilyInvulnerable = false;
 
         /// If this is true, this object is in post damage invulnerability state
-        [MMReadOnly] [Tooltip("If this is true, this object is in post damage invulnerability state")]
+        [MMReadOnly]
+        [Tooltip("If this is true, this object is in post damage invulnerability state")]
         public bool PostDamageInvulnerable = false;
 
         [Header("Damage")]
         [MMInformation(
             "Here you can specify an effect and a sound FX to instantiate when the object gets damaged, and also how long the object should flicker when hit (only works for sprites).",
             MoreMountains.Tools.MMInformationAttribute.InformationType.Info, false)]
-        
+
         /// whether or not this Health object can be damaged, you can play with this on top of Invulnerable, which will be turned on/off temporarily for temporary invulnerability. ImmuneToDamage is more of a permanent solution. 
         [Tooltip("whether or not this Health object can be damaged, you can play with this on top of Invulnerable, which will be turned on/off temporarily for temporary invulnerability. ImmuneToDamage is more of a permanent solution.")]
         public bool ImmuneToDamage = false;
-        
+
         /// the MMFeedbacks to play when the character gets hit
         [Tooltip("the MMFeedbacks to play when the character gets hit")]
         public MMFeedbacks DamageFeedbacks;
-        
+
         /// if this is true, the damage value will be passed to the MMFeedbacks as its Intensity parameter, letting you trigger more intense feedbacks as damage increases
         [Tooltip("if this is true, the damage value will be passed to the MMFeedbacks as its Intensity parameter, letting you trigger more intense feedbacks as damage increases")]
         public bool FeedbackIsProportionalToDamage = false;
@@ -62,7 +65,8 @@ namespace MoreMountains.CorgiEngine
         public bool FlickerSpriteOnHit = true;
 
         /// the color the sprite should flicker to
-        [Tooltip("the color the sprite should flicker to")] [MMCondition("FlickerSpriteOnHit", true)]
+        [Tooltip("the color the sprite should flicker to")]
+        [MMCondition("FlickerSpriteOnHit", true)]
         public Color FlickerColor = new Color32(255, 20, 20, 255);
 
         /// whether or not this object can get knockback
@@ -114,7 +118,7 @@ namespace MoreMountains.CorgiEngine
         /// whether or not the controller's forces should be set to 0 on death
         [Tooltip("whether or not the controller's forces should be set to 0 on death")]
         public bool ResetForcesOnDeath = false;
-        
+
         /// if this is true, color will be reset on revive
         [Tooltip("if this is true, color will be reset on revive")]
         public bool ResetColorOnRevive = true;
@@ -123,7 +127,7 @@ namespace MoreMountains.CorgiEngine
         [MMCondition("ResetColorOnRevive", true)]
         public string ColorMaterialPropertyName = "_Color";
         /// if this is true, this component will use material property blocks instead of working on an instance of the material.
-        [Tooltip("if this is true, this component will use material property blocks instead of working on an instance of the material.")] 
+        [Tooltip("if this is true, this component will use material property blocks instead of working on an instance of the material.")]
         public bool UseMaterialPropertyBlocks = false;
 
         public int LastDamage { get; set; }
@@ -219,8 +223,8 @@ namespace MoreMountains.CorgiEngine
             _controller = this.gameObject.GetComponent<CorgiController>();
             _healthBar = this.gameObject.GetComponent<MMHealthBar>();
             _collider2D = this.gameObject.GetComponent<Collider2D>();
-            
-            StoreInitialPosition();    
+
+            StoreInitialPosition();
             _initialized = true;
             CurrentHealth = InitialHealth;
             DamageEnabled();
@@ -249,7 +253,7 @@ namespace MoreMountains.CorgiEngine
                 {
                     if (_renderer.sharedMaterial.HasProperty(ColorMaterialPropertyName))
                     {
-                        _hasColorProperty = true; 
+                        _hasColorProperty = true;
                         _initialColor = _renderer.sharedMaterial.GetColor(ColorMaterialPropertyName);
                     }
                 }
@@ -259,7 +263,7 @@ namespace MoreMountains.CorgiEngine
                     {
                         _hasColorProperty = true;
                         _initialColor = _renderer.material.GetColor(ColorMaterialPropertyName);
-                    } 
+                    }
                 }
             }
         }
@@ -275,7 +279,7 @@ namespace MoreMountains.CorgiEngine
                 {
                     _renderer.GetPropertyBlock(_propertyBlock);
                     _propertyBlock.SetColor(ColorMaterialPropertyName, _initialColor);
-                    _renderer.SetPropertyBlock(_propertyBlock);    
+                    _renderer.SetPropertyBlock(_propertyBlock);
                 }
                 else
                 {
@@ -306,7 +310,7 @@ namespace MoreMountains.CorgiEngine
                 OnHitZero?.Invoke();
                 return;
             }
-            
+
             if (!this.enabled)
             {
                 return;
@@ -349,7 +353,7 @@ namespace MoreMountains.CorgiEngine
             // we play the damage feedback
             if (FeedbackIsProportionalToDamage)
             {
-                DamageFeedbacks?.PlayFeedbacks(this.transform.position, damage);    
+                DamageFeedbacks?.PlayFeedbacks(this.transform.position, damage);
             }
             else
             {
@@ -395,7 +399,7 @@ namespace MoreMountains.CorgiEngine
             {
                 return;
             }
-            
+
             // we prevent further damage
             DamageDisabled();
 
@@ -407,6 +411,13 @@ namespace MoreMountains.CorgiEngine
             {
                 // we send a new points event for the GameManager to catch (and other classes that may listen to it too)
                 CorgiEnginePointsEvent.Trigger(PointsMethods.Add, PointsWhenDestroyed);
+            }
+            if (gameObject.layer == LayerMask.NameToLayer("Enemies"))
+            {
+                Character player = LevelManager.Instance.Players[0];
+                Debug.Log(player);
+                player.gameObject.GetComponent<Coffee>().GainCoffee(100);
+
             }
 
             if (_animator != null)

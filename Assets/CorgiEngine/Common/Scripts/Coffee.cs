@@ -13,11 +13,13 @@ public class Coffee : MonoBehaviour
     private float interval = 1f;
     private bool isAlive = true; // Booléen pour suivre si le personnage est en vie ou non
     public Image foregroundImage; // Image de foreground de la barre de progression
-    public Image backgroundImage;
+
     private void Awake()
     {
         coffeeAmount = 100;
         maxAmount = 100;
+        foregroundImage = GameManager.Instance.forgroundBar;
+
     }
 
     private void Update()
@@ -28,19 +30,14 @@ public class Coffee : MonoBehaviour
 
             if (timer >= interval)
             {
-                LooseCoffee(10); // Appelle la fonction lorsque le timer atteint l'intervalle
+                LooseCoffee(5); // Appelle la fonction lorsque le timer atteint l'intervalle
                 timer = 0f; // Réinitialise le timer
             }
+
+            float fillamount = (float)coffeeAmount / (float)maxAmount;
+            foregroundImage.fillAmount = fillamount;
         }
-        if (foregroundImage != null)
-        {
-            // Calculer la taille relative de la barre de progression en fonction de coffeeAmount
-            float fillAmount = (float)coffeeAmount / maxAmount;
-            // Limiter la taille de la barre de progression pour qu'elle ne dépasse pas la taille de l'image de background
-            fillAmount = Mathf.Clamp01(fillAmount);
-            // Appliquer la taille relative à l'image de foreground
-            foregroundImage.fillAmount = fillAmount;
-        }
+
     }
 
     public void LooseCoffee(int amount)
@@ -60,6 +57,7 @@ public class Coffee : MonoBehaviour
         {
             coffeeAmount = maxAmount;
         }
+        Debug.Log("ui");
     }
 
 
