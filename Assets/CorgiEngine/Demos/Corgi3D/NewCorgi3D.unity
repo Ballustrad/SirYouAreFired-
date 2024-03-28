@@ -1035,7 +1035,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerPrefabs:
-  - {fileID: 2633440199751909398, guid: bfae67f6ebe80084a9d5247bda039cf8, type: 3}
+  - {fileID: 2633440199751909398, guid: c4316821411bb9a46a3f3b94fe4326d9, type: 3}
   AutoAttributePlayerIDs: 1
   SceneCharacters: []
   DebugSpawn: {fileID: 0}
@@ -1801,7 +1801,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 22460478, guid: ace2d4bf56f98df4196ff81845a465d7, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -229
+      value: -229.00002
       objectReference: {fileID: 0}
     - target: {fileID: 22462630, guid: ace2d4bf56f98df4196ff81845a465d7, type: 3}
       propertyPath: m_SizeDelta.x
